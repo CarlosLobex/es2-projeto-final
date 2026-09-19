@@ -228,7 +228,7 @@ em `Post`)
 fórum" (`last_post`, `last_post_title`, `last_post_user`,
 `last_post_username`, `last_post_created`) é tratado como cinco
 primitivos/colunas independentes em vez de um único conceito de
-domínio. Isso é a causa raiz dos Smells 2 e 3 acima: como não existe
+domínio. Isso é a causa raiz do Smell 2 acima: como não existe
 um objeto/método único responsável por "definir o último post", cada
 ponto do código que precisa atualizar essa informação reimplementa a
 atribuição dos 5 campos manualmente, campo por campo.

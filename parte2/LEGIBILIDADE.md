@@ -5,20 +5,13 @@ categoria diferente, em commits separados. Nenhuma altera
 comportamento observável — a suíte permaneceu em `243 passed, 1
 skipped` após cada commit.
 
-> **Como aplicar:** mesmo processo da Tarefa 2.3 — extraia
-> `patches-parte2-legibilidade.zip`, copie os 3 `.patch` para a raiz
-> do fork (o mesmo lugar de antes) e rode:
-> ```
-> git am 0001-refactor-forum-corrige-typo-invovled_users-para-invo.patch 0002-refactor-forum-explicita-precedencia-de-and-or-com-v.patch 0003-refactor-forum-substitui-comentario-redundante-por-m.patch
-> ```
-
 ---
 
 ## Melhoria 1 — Nomenclatura
 
 - **Categoria:** Nomenclatura.
 - **Onde:** `Topic.delete()`.
-- **Hash (aplicado no seu fork):** `de36625`
+- **Hash:** `de36625`
 
 **Antes:**
 ```python
@@ -46,7 +39,7 @@ classe e evita confusão para quem lê ou dá `grep` no código.
 
 - **Categoria:** Estilo de código (quebra de expressão composta).
 - **Onde:** `Topic._restore_topic_to_forum()`.
-- **Hash (aplicado no seu fork):** `d4e0dbf`
+- **Hash:** `d4e0dbf`
 
 **Antes:**
 ```python
@@ -83,7 +76,7 @@ resultado (a checagem `self.forum.last_post_created and ...` vira
 - **Categoria:** Substituição de comentário redundante por código
   autoexplicativo.
 - **Onde:** `Post.save()`.
-- **Hash (aplicado no seu fork):** `82d90ce`
+- **Hash:** `82d90ce`
 
 **Antes:**
 ```python

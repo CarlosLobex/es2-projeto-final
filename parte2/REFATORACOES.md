@@ -5,14 +5,11 @@ commits separados sobre `flaskbb/forum/models.py`, cada um validado
 com a suíte completa (`243 passed, 1 skipped` — mesmo resultado da
 baseline, sem nenhuma regressão) antes do próximo.
 
-Suíte completa validada no ambiente do fork após aplicar os 4
-commits: `243 passed, 1 skipped` — sem regressão.
-
 ---
 
 ## Commit 1 — `refactor(forum): extract method Forum.set_last_post ...`
 
-- **Hash (aplicado no seu fork):** `412438c`
+- **Hash:** `412438c`
 - **Smell tratado:** Smell 2 (Duplicated Code / Data Clumps) e, como
   efeito colateral, o Smell 6 (Primitive Obsession).
 - **Transformação aplicada:** Extract Method.
@@ -48,7 +45,7 @@ todos os 4 pontos passam pelo mesmo caminho.
 
 ## Commit 2 — `refactor(forum): extract method _calculate_read_cutoff ...`
 
-- **Hash (aplicado no seu fork):** `2b34bee`
+- **Hash:** `2b34bee`
 - **Smell tratado:** Smell 3 (Duplicated Code).
 - **Transformação aplicada:** Extract Method.
 
@@ -74,7 +71,7 @@ read_cutoff = _calculate_read_cutoff()
 
 ## Commit 3 — `refactor(forum): extract method _count_unread_topics ...`
 
-- **Hash (aplicado no seu fork):** `b714774`
+- **Hash:** `b714774`
 - **Smell tratado:** Smell 4 (Long Method — `Forum.update_read`).
 - **Transformação aplicada:** Extract Method.
 
@@ -88,11 +85,18 @@ read_cutoff)`, e `update_read` passou a só chamar
 método principal caiu de ~87 para ~55 linhas e agora tem uma única
 responsabilidade clara (decidir o que fazer, não montar a query).
 
+**Validação:** `Forum.update_read` tem 0% de cobertura na baseline, então o
+`243 passed, 1 skipped` não exercita este método e não prova, por si só, que
+o comportamento se manteve. A extração apenas moveu a query, sem alterar seu
+conteúdo (verificável no diff do commit `b714774`); a garantia de equivalência
+vem dessa conferência do diff, não de um teste automatizado. Um teste direto
+para `update_read` fica registrado como melhoria futura.
+
 ---
 
 ## Commit 4 — `refactor(forum): remove ramo else inalcancavel ...`
 
-- **Hash (aplicado no seu fork):** `4b11844`
+- **Hash:** `4b11844`
 - **Smell tratado:** Smell 5 (Dead Code).
 - **Transformação aplicada:** Simplificação de condicional (remoção
   de código morto).
